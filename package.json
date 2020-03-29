@@ -7,8 +7,8 @@
     "pegjs": "^0.10.0"
   },
   "devDependencies": {},
-  "scripts": {
-    "arz": "node arz.js"
+  "bin": {
+    "arz": "./arz.js"
   },
   "repository": {
     "type": "git",
