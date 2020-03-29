@@ -1,0 +1,27 @@
+{
+  "name": "arz",
+  "version": "0.0.1",
+  "description": "a parser generator that makes nice trees",
+  "main": "arz.js",
+  "dependencies": {
+    "pegjs": "^0.10.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "arz": "node arz.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nasser/arz.git"
+  },
+  "keywords": [
+    "pegjs",
+    "parser"
+  ],
+  "author": "Ramsey Nasser",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/nasser/arz/issues"
+  },
+  "homepage": "https://github.com/nasser/arz#readme"
+}
