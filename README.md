@@ -12,6 +12,8 @@ npx arz file.peg
 
 This writes a standalone F# module named `Generated` to standard out.
 
+Running with the [arithmetic PEGjs example](https://github.com/pegjs/pegjs/blob/master/examples/arithmetics.pegjs) produces [these results](https://gist.github.com/nasser/e103624176ed0274f179f87859bcb677).
+
 ### Status
 
 Very early. I am using it for some language projects, but it may well break for you.
