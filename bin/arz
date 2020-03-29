@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 const fs = require('fs')
-const arz = require('./arz')
+const arz = require('arz')
 
 if(process.argv[2]) {
     let grammar = fs.readFileSync(process.argv[2], 'utf8')

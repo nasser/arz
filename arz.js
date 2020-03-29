@@ -56,7 +56,7 @@ function walk(fn, expr) {
     }
 }
 
-const metagrammarSource = fs.readFileSync('parser.pegjs', 'utf8')
+const metagrammarSource = fs.readFileSync(__dirname + '/parser.pegjs', 'utf8')
 // // const metagrammarSource = `__ = (WhiteSpace / LineTerminatorSequence / Comment)* `
 // // const oskarGrammarSource = fs.readFileSync('oskar.peg', 'utf8')
 // const oskarGrammarSource = fs.readFileSync('simple.peg', 'utf8')
@@ -407,8 +407,8 @@ function renderParsingFunctions(rules, options) {
     return "let rec " + rules.map(e => renderParser(e, options)).map(s => s.trim()).join("\nand ")
 }
 
-const preambleSource = fs.readFileSync('preamble.fs', "utf8")
-const postambleSource = fs.readFileSync('postamble.fs', "utf8")
+const preambleSource = fs.readFileSync(__dirname + '/preamble.fs', "utf8")
+const postambleSource = fs.readFileSync(__dirname + '/postamble.fs', "utf8")
 
 const defaultOptions = {
     // classListToString: true,
