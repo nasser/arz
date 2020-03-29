@@ -1,7 +1,7 @@
 # arz
 a parser generator that makes nice trees
 
-Based on [PEG.js](https://pegjs.org/), arz is a parser generator that makes "nice trees." It uses your PEG grammar to derive a type for your syntax and parsers that produce instances of that type. Currently it outputs F# code but other languages are possible in theory.
+Based on [PEG.js](https://pegjs.org/), arz is a parser generator that makes "nice" parse trees without a need to define parser actions. It uses your PEG grammar to derive a type for your syntax and parsers that produce instances of that type. The resulting parse tree has names and structure taken from your PEG grammar and should ideally not require any additional processing. Currently it outputs F# code but other languages are possible in theory.
 
 ### Usage
 
