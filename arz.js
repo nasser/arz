@@ -432,9 +432,11 @@ function compile(grammar, options = {}) {
     ].join('\n')
 }
 
-if(process.argv[2]) {
-    let grammar = fs.readFileSync(process.argv[2], 'utf8')
-    console.log(compile(grammar));
-} else {
-    console.log("USAGE npx arz file.peg")
-}
+module.exports = { compile }
+
+// if(process.argv[2]) {
+//     let grammar = fs.readFileSync(process.argv[2], 'utf8')
+//     console.log(compile(grammar));
+// } else {
+//     console.log("USAGE npx arz file.peg")
+// }
