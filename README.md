@@ -6,7 +6,7 @@ Based on [PEG.js](https://pegjs.org/), arz is a parser generator that makes "nic
 ### Usage
 
 ```
-npm install
+npm install --save nasser/arz
 npx arz file.peg
 ```
 
