@@ -299,7 +299,7 @@ function renderParser(t, options) {
             break;
         case 'literal':
             lines.push(`match expectString sr "${t.value}" with`)
-            lines.push(`| Some _ -> Some ${literalName(t.value)}`)
+            lines.push(`| Some v -> Some (${literalName(t.value)} v)`)
             lines.push(`| None ->`)
             lines.push(`reset sr p`)
             lines.push('None')
