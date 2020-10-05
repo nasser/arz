@@ -104,6 +104,8 @@ function fsharpType(expr) {
             return { type: "option", of: fsharpType(expr.expression) };
         case "group":
             return fsharpType(expr.expression);
+        case "simple_not":
+            return { ...fsharpType(expr.expression), negation:true };
     }
 }
 
@@ -247,7 +249,7 @@ function renderType(t, options) {
         case 'option':
             return `${name} = ${name} of ${typeName(t.of)} option`
         case 'tuple':
-            let elements = t.elements.filter(e => !e.discard);
+            let elements = t.elements.filter(e => !e.discard && !e.negation);
             if(elements.length == 0) {
                 return `${name} = ${name}`
             } else {
@@ -364,12 +366,22 @@ function renderParser(t, options) {
             let matchVars = []
 
             t.elements.forEach(e => {
+                let p = `p${i}`
                 let v = `var${i++}`
-                lines.push(`let ${v} = ${renderSequenceElementParser(e)}`)
-                lines.push(`if Option.isNone ${v} then`)
-                lines.push(`  reset sr p; None`)
-                lines.push(`else`)
-                if (!e.discard)
+                if(e.negation) {
+                    lines.push(`let ${p} = position sr`)
+                    lines.push(`let ${v} = ${renderSequenceElementParser(e)}`)
+                    lines.push(`if Option.isSome ${v} then`)
+                    lines.push(`  reset sr p; None`)
+                    lines.push(`else`)
+                    lines.push(`reset sr ${p}`)
+                } else {
+                    lines.push(`let ${v} = ${renderSequenceElementParser(e)}`)
+                    lines.push(`if Option.isNone ${v} then`)
+                    lines.push(`  reset sr p; None`)
+                    lines.push(`else`)
+                }
+                if (!e.discard && !e.negation)
                     matchVars.push(e.type === 'option' ? v : `Option.get ${v}`)
             })
             let matchVarsString = matchVars.length == 0 ? "" : ` (${matchVars})`
