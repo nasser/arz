@@ -86,6 +86,8 @@ function fsharpType(expr) {
             }
         case "class":
             return { type: "class", parts: expr.parts, inverted: expr.inverted }
+        case "any":
+            return { type: "class", parts: ["."], inverted: false, raw: true }
         case "literal":
             return { type: "literal", value: expr.value }
         case "rule_ref":
@@ -263,6 +265,8 @@ function escapeRegexp(s) {
 };
 
 function regexString(t) {
+    if(t.raw)
+        return t.parts
     return `[${(t.inverted ? '^' : '') + t.parts.map(p => Array.isArray(p) ? p.join('-') : escapeRegexp(p)).join('')}]`;
 }
 
