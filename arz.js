@@ -87,7 +87,7 @@ function fsharpType(expr) {
         case "class":
             return { type: "class", parts: expr.parts, inverted: expr.inverted }
         case "any":
-            return { type: "class", parts: ["."], inverted: false, raw: true }
+            return { type: "class", parts: [".|\\\\n"], inverted: false, raw: true }
         case "literal":
             return { type: "literal", value: expr.value }
         case "rule_ref":
